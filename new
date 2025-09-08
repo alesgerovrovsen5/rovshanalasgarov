@@ -1,0 +1,307 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Globe, FileDown, MapPin, ChevronRight, TerminalSquare, Layers, Rocket, BookOpen } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+// -----------------------------
+// Editable profile & content
+// -----------------------------
+const PROFILE = {
+  name: "Rovshan Alasgarov",
+  role: "Petroleum Engineer • Data & Tech Enthusiast",
+  location: "Baku, Azerbaijan",
+  summary:
+    "Master's in Petroleum Engineering with hands‑on field experience. Passionate about drilling fluids, data analysis, and building useful tools. I enjoy open source and sharing knowledge.",
+  avatar: "https://avatars.githubusercontent.com/u/0?v=4", // replace with your avatar URL
+  links: {
+    github: "https://github.com/rovshanalasgarov",
+    linkedin: "https://www.linkedin.com/in/rovshan-alasgarov",
+    email: "mailto:youremail@example.com",
+    website: "https://rovshanalasgarov.github.io"
+  },
+  resumeUrl: "#" // add a PDF link (e.g., /resume.pdf)
+};
+
+const SKILLS = [
+  "Python", "SQL", "Pandas", "MATLAB", "Git", "Jupyter",
+  "Data Visualization", "ETL", "Dashboards",
+  "Petroleum Engineering", "Drilling Fluids", "Well Operations",
+  "Problem Solving", "Communication"
+];
+
+const PROJECTS = [
+  {
+    title: "Drilling Fluids Optimizer",
+    description:
+      "A data tool that analyzes mud properties and suggests polymer blends to meet target rheology while minimizing cost.",
+    tags: ["Python", "Optimization", "Pandas"],
+    repo: "https://github.com/rovshanalasgarov",
+    demo: "#"
+  },
+  {
+    title: "Rig Ops Dashboard",
+    description:
+      "Interactive web dashboard to monitor daily drilling metrics (ROP, WOB, Mud Weight) with exportable reports.",
+    tags: ["React", "Vite", "Charts"],
+    repo: "https://github.com/rovshanalasgarov",
+    demo: "#"
+  },
+  {
+    title: "VCV/HireVue Interview Prep",
+    description:
+      "A curated set of behavioral Q&A and a timer-based practice tool for on‑demand interviews.",
+    tags: ["JS", "UX", "Product"],
+    repo: "https://github.com/rovshanalasgarov",
+    demo: "#"
+  }
+];
+
+const EXPERIENCE = [
+  {
+    org: "SLB (Schlumberger) – Early Careers",
+    role: "Field Engineer (Candidate)",
+    period: "2025",
+    bullets: [
+      "Prepared for field operations, drilling fluids QA/QC, and HSE workflows.",
+      "Built interview prep resources and technical notes for mud systems."
+    ]
+  },
+  {
+    org: "University / Research",
+    role: "MSc Petroleum Engineering",
+    period: "—",
+    bullets: [
+      "Thesis work focused on polymer‑based mud systems and rheology modeling.",
+      "Collaborated on lab experiments and data processing in Python/MATLAB."
+    ]
+  }
+];
+
+const CERTS = [
+  "HSE Basics", "Well Control (Intro)", "Python for Data Analysis", "Git & GitHub"
+];
+
+// -----------------------------
+// UI helpers
+// -----------------------------
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.5 }
+};
+
+function Section({ id, title, icon, children }) {
+  return (
+    <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="flex items-center gap-3 mb-8">
+        {icon}
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h2>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+// -----------------------------
+// Main component
+// -----------------------------
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      {/* NAVBAR */}
+      <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+          <a href="#home" className="font-bold text-slate-900">RA</a>
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            <a className="hover:opacity-80" href="#about">About</a>
+            <a className="hover:opacity-80" href="#skills">Skills</a>
+            <a className="hover:opacity-80" href="#projects">Projects</a>
+            <a className="hover:opacity-80" href="#experience">Experience</a>
+            <a className="hover:opacity-80" href="#contact">Contact</a>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button asChild className="rounded-2xl">
+              <a href={PROFILE.links.github} target="_blank" rel="noreferrer">
+                <Github className="mr-2 h-4 w-4" /> GitHub
+              </a>
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <header id="home" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <motion.div {...fadeUp} className="grid md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-7">
+            <div className="inline-flex items-center gap-2 text-xs rounded-full border px-3 py-1 mb-4">
+              <Rocket className="h-3.5 w-3.5" /> Available for opportunities
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
+              Hi, I'm {PROFILE.name.split(" ")[0]} 👋
+            </h1>
+            <p className="text-lg text-slate-600 mb-6">{PROFILE.role}</p>
+            <p className="text-slate-700 mb-6 max-w-2xl">{PROFILE.summary}</p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild className="rounded-2xl">
+                <a href="#projects"><ChevronRight className="h-4 w-4 mr-2"/>View Projects</a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-2xl">
+                <a href={PROFILE.resumeUrl}><FileDown className="h-4 w-4 mr-2"/>Download CV</a>
+              </Button>
+              <Button asChild variant="ghost" className="rounded-2xl">
+                <a href={PROFILE.links.linkedin} target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4 mr-2"/>LinkedIn</a>
+              </Button>
+            </div>
+            <div className="mt-6 inline-flex items-center gap-2 text-sm text-slate-500">
+              <MapPin className="h-4 w-4" /> {PROFILE.location}
+            </div>
+          </div>
+          <div className="md:col-span-5">
+            <Card className="rounded-2xl shadow-xl overflow-hidden">
+              <CardContent className="p-0">
+                <img src={PROFILE.avatar} alt="avatar" className="w-full h-64 object-cover" />
+              </CardContent>
+            </Card>
+          </div>
+        </motion.div>
+      </header>
+
+      {/* ABOUT */}
+      <Section id="about" title="About" icon={<BookOpen className="h-6 w-6" />}>        
+        <motion.div {...fadeUp}>
+          <Tabs defaultValue="bio" className="w-full">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="bio">Bio</TabsTrigger>
+              <TabsTrigger value="highlights">Highlights</TabsTrigger>
+              <TabsTrigger value="certs">Certifications</TabsTrigger>
+            </TabsList>
+            <TabsContent value="bio">
+              <p className="text-slate-700 leading-relaxed">
+                I'm an engineer who loves mixing energy domain knowledge with software. I build small tools that reduce manual work,
+                visualize drilling data, and help teams prepare better. I value clarity, safety, and continuous improvement.
+              </p>
+            </TabsContent>
+            <TabsContent value="highlights">
+              <ul className="grid sm:grid-cols-2 gap-3 list-disc pl-5 text-slate-700">
+                <li>Hands‑on exposure to drilling fluids and lab measurements</li>
+                <li>Python data analysis (Pandas/NumPy), reporting workflows</li>
+                <li>Built interview prep kits used by peers</li>
+                <li>Strong communicator; enjoy collaborative problem solving</li>
+              </ul>
+            </TabsContent>
+            <TabsContent value="certs">
+              <div className="flex flex-wrap gap-2">
+                {CERTS.map((c) => (
+                  <Badge key={c} className="rounded-2xl" variant="secondary">{c}</Badge>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </motion.div>
+      </Section>
+
+      {/* SKILLS */}
+      <Section id="skills" title="Skills" icon={<Layers className="h-6 w-6" />}>        
+        <motion.div {...fadeUp} className="flex flex-wrap gap-2">
+          {SKILLS.map((s) => (
+            <Badge key={s} className="rounded-2xl" variant="outline">{s}</Badge>
+          ))}
+        </motion.div>
+      </Section>
+
+      {/* PROJECTS */}
+      <Section id="projects" title="Projects" icon={<TerminalSquare className="h-6 w-6" />}>        
+        <motion.div {...fadeUp} className="grid md:grid-cols-3 gap-6">
+          {PROJECTS.map((p) => (
+            <Card key={p.title} className="rounded-2xl hover:shadow-xl transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                <p className="text-sm text-slate-600 mb-4">{p.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {p.tags.map((t) => (
+                    <Badge key={t} variant="secondary" className="rounded-2xl text-xs">{t}</Badge>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <Button asChild size="sm" className="rounded-2xl">
+                    <a href={p.demo} target="_blank" rel="noreferrer"><Globe className="h-4 w-4 mr-2"/>Demo</a>
+                  </Button>
+                  <Button asChild size="sm" variant="outline" className="rounded-2xl">
+                    <a href={p.repo} target="_blank" rel="noreferrer"><Github className="h-4 w-4 mr-2"/>Code</a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </motion.div>
+      </Section>
+
+      {/* EXPERIENCE */}
+      <Section id="experience" title="Experience" icon={<ChevronRight className="h-6 w-6" />}>        
+        <motion.ol {...fadeUp} className="relative border-s border-slate-200 pl-6 space-y-8">
+          {EXPERIENCE.map((e) => (
+            <li key={e.org} className="relative">
+              <span className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-slate-900" />
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h3 className="text-lg font-semibold">{e.role} · {e.org}</h3>
+                <span className="text-sm text-slate-500">{e.period}</span>
+              </div>
+              <ul className="mt-2 list-disc pl-5 text-slate-700 space-y-1">
+                {e.bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </motion.ol>
+      </Section>
+
+      {/* CONTACT */}
+      <Section id="contact" title="Contact" icon={<Mail className="h-6 w-6" />}>        
+        <motion.div {...fadeUp} className="grid md:grid-cols-2 gap-6">
+          <Card className="rounded-2xl">
+            <CardContent className="p-6">
+              <h3 className="font-semibold mb-2">Let's talk</h3>
+              <p className="text-slate-600 mb-4">Want to collaborate or discuss an opportunity? Reach out via email or LinkedIn.</p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild className="rounded-2xl">
+                  <a href={PROFILE.links.email}><Mail className="h-4 w-4 mr-2"/>Email</a>
+                </Button>
+                <Button asChild variant="outline" className="rounded-2xl">
+                  <a href={PROFILE.links.linkedin} target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4 mr-2"/>LinkedIn</a>
+                </Button>
+                <Button asChild variant="ghost" className="rounded-2xl">
+                  <a href={PROFILE.links.github} target="_blank" rel="noreferrer"><Github className="h-4 w-4 mr-2"/>GitHub</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="rounded-2xl">
+            <CardContent className="p-6">
+              <h3 className="font-semibold mb-2">Quick Links</h3>
+              <ul className="space-y-2 text-slate-700">
+                <li><a className="underline underline-offset-4" href={PROFILE.links.website}>Website</a></li>
+                <li><a className="underline underline-offset-4" href={PROFILE.links.github}>GitHub Profile</a></li>
+                <li><a className="underline underline-offset-4" href="https://github.com/rovshanalasgarov?tab=repositories">Repositories</a></li>
+              </ul>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </Section>
+
+      {/* FOOTER */}
+      <footer className="py-10 text-center text-sm text-slate-500">
+        <div className="flex items-center justify-center gap-4 mb-2">
+          <a href={PROFILE.links.github} target="_blank" rel="noreferrer" className="hover:opacity-80"><Github className="h-5 w-5"/></a>
+          <a href={PROFILE.links.linkedin} target="_blank" rel="noreferrer" className="hover:opacity-80"><Linkedin className="h-5 w-5"/></a>
+          <a href={PROFILE.links.email} className="hover:opacity-80"><Mail className="h-5 w-5"/></a>
+        </div>
+        <p>© {new Date().getFullYear()} {PROFILE.name}. Built with React & Tailwind.</p>
+      </footer>
+    </div>
+  );
+}
