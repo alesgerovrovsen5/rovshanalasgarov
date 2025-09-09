@@ -54,5 +54,13 @@
   <footer>
     © 2025 Saat Mağazası — All Rights Reserved
   </footer>
+  <script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push({name, price});
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(name + " has been added to your cart!");
+}
+</script>
 </body>
 </html>
