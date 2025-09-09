@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Website</title>
+  <title>Saat Mağazası - Online Watch Store</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,6 +18,12 @@
       padding: 20px;
       text-align: center;
     }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      margin-top: 10px;
+    }
     nav a {
       color: white;
       margin: 0 15px;
@@ -27,15 +33,54 @@
       text-decoration: underline;
     }
     main {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product {
       background: white;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
     }
-    h1, h2 {
+    .product img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .product h3 {
+      margin: 10px 0;
       color: #2c3e50;
+    }
+    .product p {
+      margin: 5px 0;
+    }
+    .price {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #219150;
     }
     footer {
       text-align: center;
@@ -49,37 +94,54 @@
 </head>
 <body>
   <header>
-    <h1>My Professional Website</h1>
+    <h1>Saat Mağazası</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
+      <a href="#products">Watches</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hello 👋 I’m Rovshan. I enjoy coding 💻, working on open-source 🌍, and sharing knowledge 📚.</p>
-    </section>
-
-    <section id="projects">
-      <h2>My Projects</h2>
-      <ul>
-        <li><a href="https://github.com/alesgerovrovsen5" target="_blank">GitHub Profile</a></li>
-        <li><a href="#">Project 1</a> – A cool app I built.</li>
-        <li><a href="#">Project 2</a> – Another awesome project.</li>
-      </ul>
+    <section id="products">
+      <h2>Our Collection</h2>
+      <div class="products">
+        
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200.png?text=Luxury+Watch+1" alt="Luxury Watch 1">
+          <h3>Luxury Watch 1</h3>
+          <p>Elegant design with leather strap.</p>
+          <p class="price">$199</p>
+          <a class="btn" href="https://www.paypal.com/buy?item=watch1" target="_blank">Buy Now</a>
+        </div>
+        
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200.png?text=Luxury+Watch+2" alt="Luxury Watch 2">
+          <h3>Luxury Watch 2</h3>
+          <p>Stylish stainless steel wristwatch.</p>
+          <p class="price">$249</p>
+          <a class="btn" href="https://www.paypal.com/buy?item=watch2" target="_blank">Buy Now</a>
+        </div>
+        
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200.png?text=Luxury+Watch+3" alt="Luxury Watch 3">
+          <h3>Luxury Watch 3</h3>
+          <p>Modern chronograph design.</p>
+          <p class="price">$299</p>
+          <a class="btn" href="https://www.paypal.com/buy?item=watch3" target="_blank">Buy Now</a>
+        </div>
+        
+      </div>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>You can reach me at: <strong>rovshan@example.com</strong></p>
+      <h2>Contact Us</h2>
+      <p>Email: <strong>contact@saatmagazasi.com</strong></p>
+      <p>Phone: <strong>+994 55 123 4567</strong></p>
     </section>
   </main>
 
   <footer>
-    © 2025 Rovshan — All Rights Reserved
+    © 2025 Saat Mağazası — All Rights Reserved
   </footer>
 </body>
 </html>
